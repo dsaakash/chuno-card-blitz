@@ -7,6 +7,7 @@ import FeaturesSection from '@/components/FeaturesSection';
 import BenefitsSection from '@/components/BenefitsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import FooterSection from '@/components/FooterSection';
+import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <BenefitsSection />
       <TestimonialsSection />
       <FooterSection />
+      <Toaster />
     </div>
   );
 };

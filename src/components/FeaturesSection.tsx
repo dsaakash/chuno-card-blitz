@@ -1,8 +1,16 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { CircleCheck } from 'lucide-react';
+import { 
+  Dialog, 
+  DialogContent,
+  DialogTrigger 
+} from "@/components/ui/dialog";
+import WaitlistForm from './WaitlistForm';
 
 const FeaturesSection: React.FC = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  
   const features = [
     {
       title: "Real-time Multiplayer",
@@ -84,9 +92,17 @@ const FeaturesSection: React.FC = () => {
               <h4 className="text-xl font-bold mb-2">Coming Soon</h4>
               <div className="text-4xl font-bold mb-2">Chuno Premium</div>
               <p className="text-center mb-4">Join our waitlist to be the first to access premium features</p>
-              <button className="bg-white text-chuno-purple font-bold py-3 px-6 rounded-full hover:bg-opacity-90 transition-colors">
-                Join Waitlist
-              </button>
+              
+              <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                <DialogTrigger asChild>
+                  <button className="bg-white text-chuno-purple font-bold py-3 px-6 rounded-full hover:bg-opacity-90 transition-colors">
+                    Join Waitlist
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+                  <WaitlistForm onClose={() => setDialogOpen(false)} />
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
